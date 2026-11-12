@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1220">
+  <title>Filter Wisuda dan Kampus</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- three.js dipatok di r160: MindAR 1.2.5 masih memakai sRGBEncoding yang dihapus di r162+ -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+      "mindar-face-three": "https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-three.prod.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- MindAR menaruh <video> dan <canvas> di dalam elemen ini -->
+  <main id="ar-container" aria-label="Tampilan kamera"></main>
+
+  <!-- Petunjuk saat wajah belum terdeteksi (class "hidden" diatur otomatis oleh MindAR) -->
+  <div id="hint-wajah" class="hint hidden">Arahkan wajahmu ke kamera</div>
+
+  <div id="label-filter" aria-live="polite"></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Kontrol utama (nyaman untuk jempol: semua di bagian bawah) -->
+  <section id="ui" class="hidden">
+    <button id="btn-kamera" class="btn-bulat kecil" aria-label="Ganti kamera depan atau belakang">🔄</button>
+
+    <div id="kontrol">
+      <div id="daftar-filter" role="tablist" aria-label="Pilih filter"></div>
+      <div id="bar-bawah">
+        <button id="btn-prev" class="btn-bulat" aria-label="Filter sebelumnya">‹</button>
+        <button id="btn-foto" class="shutter" aria-label="Ambil foto"><span></span></button>
+        <button id="btn-next" class="btn-bulat" aria-label="Filter berikutnya">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Layar mulai -->
+  <section id="layar-mulai" class="overlay">
+    <div class="kartu">
+      <div class="emoji">🎓</div>
+      <h1>Filter Wisuda dan Kampus</h1>
+      <p>Pasang topi toga dan kacamata 3D di wajahmu, lalu ambil foto.</p>
+      <p class="privasi">🔒 Kamera diproses langsung di perangkatmu. Tidak ada video atau foto yang diunggah ke server.</p>
+      <button id="btn-mulai" class="btn-utama">Mulai kamera</button>
+    </div>
+  </section>
+
+  <!-- Layar memuat -->
+  <section id="layar-memuat" class="overlay hidden">
+    <div class="kartu">
+      <div class="spinner" aria-hidden="true"></div>
+      <p id="teks-memuat">Memuat…</p>
+      <div class="progres"><div id="bar-progres"></div></div>
+    </div>
+  </section>
+
+  <!-- Layar error (izin kamera ditolak, dll.) -->
+  <section id="layar-error" class="overlay hidden" role="alertdialog" aria-labelledby="judul-error">
+    <div class="kartu">
+      <div class="emoji">📵</div>
+      <h2 id="judul-error">Terjadi masalah</h2>
+      <p id="isi-error" class="pre"></p>
+      <button id="btn-coba" class="btn-utama">Coba lagi</button>
+    </div>
+  </section>
+
+  <!-- Pratinjau foto -->
+  <section id="pratinjau" class="overlay hidden" role="dialog" aria-label="Pratinjau foto">
+    <div class="kartu foto">
+      <img id="img-pratinjau" alt="Hasil foto filter">
+      <div class="baris">
+        <button id="btn-tutup" class="btn-sekunder">Tutup</button>
+        <button id="btn-simpan" class="btn-utama">Simpan ke perangkat</button>
+      </div>
+    </div>
+  </section>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

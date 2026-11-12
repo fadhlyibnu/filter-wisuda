@@ -1,0 +1,42 @@
+{
+  "versi": 1,
+  "occluder": true,
+  "efek": {
+    "mulutTerbuka": true,
+    "kepalaMiring": true,
+    "ambangMulut": 0.06,
+    "ambangMiringDerajat": 15
+  },
+  "aksesori": {
+    "toga": {
+      "nama": "Topi Toga",
+      "model": "assets/models/toga.glb",
+      "anchor": 10,
+      "pivot": "bawah",
+      "sumbuLebar": "x",
+      "lebarRelatif": 1.7,
+      "skala": 1,
+      "posisi": [0, -0.6, -0.5],
+      "rotasiDerajat": [0, 90, 0],
+      "animasi": { "tipe": "klip", "cadangan": "goyang", "amplitudo": 0.07, "kecepatan": 2.2 }
+    },
+    "kacamata": {
+      "nama": "Kacamata",
+      "model": "assets/models/kacamata.glb",
+      "anchor": 168,
+      "pivot": "tengah",
+      "sumbuLebar": "x",
+      "lebarRelatif": 1.0,
+      "skala": 1,
+      "posisi": [0, -0.01, -0.3],
+      "rotasiDerajat": [0, 180, 0],
+      "animasi": { "tipe": "berkilau", "kecepatan": 3, "ukuranKilau": 0.16
+}
+    }
+  },
+  "filters": [
+    { "id": "wisuda", "nama": "Wisuda", "ikon": "🎓", "aksesori": ["toga", "kacamata"] },
+    { "id": "toga", "nama": "Toga", "ikon": "🎩", "aksesori": ["toga"] },
+    { "id": "kacamata", "nama": "Kacamata", "ikon": "🕶️", "aksesori": ["kacamata"] }
+  ]
+}

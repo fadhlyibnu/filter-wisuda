@@ -1,0 +1,7 @@
+Taruh file aksesori 3D di folder ini:
+
+  toga.glb
+  kacamata.glb
+
+Nama file harus sama dengan yang tertulis di filters.json (bagian "model").
+Target ukuran: kurang dari 1 MB per file. Lihat README.md Langkah 2.
